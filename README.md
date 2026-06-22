@@ -39,6 +39,13 @@
     - [1.15.1. AI Generated (Recommended):](#1151-ai-generated-recommended)
   - [1.16. Strong AI vs Weak AI:](#116-strong-ai-vs-weak-ai)
     - [1.16.1. AI Generated (Recommended):](#1161-ai-generated-recommended)
+- [2. Home Work 1:](#2-home-work-1)
+  - [2.1. Question 1:](#21-question-1)
+    - [2.1.1. Answer:](#211-answer)
+  - [2.2. Question 2:](#22-question-2)
+    - [2.2.1. Answer:](#221-answer)
+  - [2.3. Question 3:](#23-question-3)
+    - [2.3.1. Answer:](#231-answer)
 
 # 1. Introduction to Artificial Intelligence:
 
@@ -215,3 +222,51 @@ A heuristic system is an AI approach that solves problems using experience-based
 | Intelligence  | Narrow                | General                                |
 | Understanding | No real understanding | Human-like understanding (theoretical) |
 | Existence     | Exists today          | Not yet built                          |
+
+# 2. Home Work 1:
+## 2.1. Question 1: 
+![alt text](./assets/images/home-work-1/question-1.png) 
+
+![alt text](./assets/images/home-work-1/q1.png)
+
+**Note:** Mama if you look closely to the graph you will see a pattern like this: 
+
+```
+START → A (2)
+START → B (3)
+START → D (5)
+A → C (4)
+B → D (4)
+C → D (1)
+C → G (2)
+D → G (5)
+```
+
+and here our goal is to try to resolve the graph in such a way that states with earlier alphabetical order and expanded first.
+
+### 2.1.1. Answer:
+
+- Depth-First Search:  
+
+![alt text](./assets/images/home-work-1/dfs.png)
+
+- Breadth-First Search:
+
+![alt text](./assets/images/home-work-1/bfs.png)
+
+- Uniform Cost Search:
+
+![alt text](./assets/images/home-work-1/ucs.png)
+
+## 2.2. Question 2: 
+
+![alt text](./assets/images/home-work-1/q2.png)
+### 2.2.1. Answer:
+![alt text](./assets/images/home-work-1/properties-of-dfs-bfs-ids.png)
+
+## 2.3. Question 3:
+Briefly explain the main idea behind IDS & DLS search algorithms
+
+### 2.3.1. Answer:
+![alt text](./assets/images/home-work-1/dls.png)
+![alt text](./assets/images/home-work-1/ids.png)
