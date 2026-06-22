@@ -29,29 +29,32 @@
     - [2.3.4. Utility-Based Agent:](#234-utility-based-agent)
     - [2.3.5. Learning Agent:](#235-learning-agent)
   - [2.4. Properties of Environments:](#24-properties-of-environments)
-- [Searching Algorithms:](#searching-algorithms)
-  - [Uninformed Search:](#uninformed-search)
-    - [Uninformed Search Algorithms:](#uninformed-search-algorithms)
-      - [Breadth-First Search (BFS):](#breadth-first-search-bfs)
-      - [Depth-First Search (DFS):](#depth-first-search-dfs)
-      - [Uniform Cost Search (UCS):](#uniform-cost-search-ucs)
-      - [Depth-Limited Search (DLS):](#depth-limited-search-dls)
-      - [Iterative Deepening Search (IDS)](#iterative-deepening-search-ids)
-      - [Quick Recap:](#quick-recap)
-  - [Informed Search:](#informed-search)
-    - [Informed Search Algorithms:](#informed-search-algorithms)
-    - [Informed Search Algorithms:](#informed-search-algorithms-1)
-      - [Greedy Best-First Search:](#greedy-best-first-search)
-      - [A\* (A-Star) Search:](#a-a-star-search)
-      - [Quick Recap:](#quick-recap-1)
-  - [Difference Between Uninformed and Informed Search:](#difference-between-uninformed-and-informed-search)
-- [3. Home Work 1:](#3-home-work-1)
-  - [3.1. Question 1:](#31-question-1)
-    - [3.1.1. Answer:](#311-answer)
-  - [3.2. Question 2:](#32-question-2)
-    - [3.2.1. Answer:](#321-answer)
-  - [3.3. Question 3:](#33-question-3)
-    - [3.3.1. Answer:](#331-answer)
+- [3. Searching Algorithms:](#3-searching-algorithms)
+  - [3.1. Uninformed Search:](#31-uninformed-search)
+    - [3.1.1. Uninformed Search Algorithms:](#311-uninformed-search-algorithms)
+      - [3.1.1.1. Breadth-First Search (BFS):](#3111-breadth-first-search-bfs)
+      - [3.1.1.2. Depth-First Search (DFS):](#3112-depth-first-search-dfs)
+      - [3.1.1.3. Uniform Cost Search (UCS):](#3113-uniform-cost-search-ucs)
+      - [3.1.1.4. Depth-Limited Search (DLS):](#3114-depth-limited-search-dls)
+      - [3.1.1.5. Iterative Deepening Search (IDS)](#3115-iterative-deepening-search-ids)
+      - [3.1.1.6. Quick Recap:](#3116-quick-recap)
+  - [3.2. Informed Search:](#32-informed-search)
+    - [3.2.1. Informed Search Algorithms:](#321-informed-search-algorithms)
+    - [3.2.2. Informed Search Algorithms:](#322-informed-search-algorithms)
+      - [3.2.2.1. Greedy Best-First Search:](#3221-greedy-best-first-search)
+      - [3.2.2.2. A\* (A-Star) Search:](#3222-a-a-star-search)
+      - [3.2.2.3. Quick Recap:](#3223-quick-recap)
+  - [3.3. Local Search:](#33-local-search)
+    - [3.3.1. Local Search Algorithms:](#331-local-search-algorithms)
+      - [3.3.1.1. Hill Climbing:](#3311-hill-climbing)
+  - [3.4. Difference Between Uninformed, Informed, and Local Search:](#34-difference-between-uninformed-informed-and-local-search)
+- [4. Home Work 1:](#4-home-work-1)
+  - [4.1. Question 1:](#41-question-1)
+    - [4.1.1. Answer:](#411-answer)
+  - [4.2. Question 2:](#42-question-2)
+    - [4.2.1. Answer:](#421-answer)
+  - [4.3. Question 3:](#43-question-3)
+    - [4.3.1. Answer:](#431-answer)
 
 # 1. Introduction to Artificial Intelligence:
 
@@ -285,12 +288,12 @@ The environment in which an agent operates can be described using several proper
 
 
 
-# Searching Algorithms:
+# 3. Searching Algorithms:
 In Artificial Intelligence, search algorithms are often divided into two categories:
 1. Uninformed Search
 2. Informed Search 
    
-## Uninformed Search:
+## 3.1. Uninformed Search:
 Uninformed search algorithms have no extra information about how close a state is to the goal. They only know:
 - The initial state
 - The possible actions
@@ -314,8 +317,8 @@ A   B
 C   Goal
 ```
 
-### Uninformed Search Algorithms:
-#### Breadth-First Search (BFS):
+### 3.1.1. Uninformed Search Algorithms:
+#### 3.1.1.1. Breadth-First Search (BFS):
 BFS explores nodes level by level. It visits all nodes at the current depth before moving to the next depth.
 
 **How it Works:**
@@ -353,7 +356,7 @@ where,
 - b = branching factor
 - d = depth of shallowest goal
 
-#### Depth-First Search (DFS):
+#### 3.1.1.2. Depth-First Search (DFS):
 DFS explores one branch as deep as possible before backtracking.
 
 **How it Works:**
@@ -390,7 +393,7 @@ DFS explores one branch as deep as possible before backtracking.
 where,
 - m = maximum depth
 
-#### Uniform Cost Search (UCS):
+#### 3.1.1.3. Uniform Cost Search (UCS):
 UCS expands the node with the lowest path cost first. Unlike BFS, UCS considers edge costs.
 
 **How it Works:**
@@ -436,7 +439,7 @@ because cost 5 is lower.
 | ----------------------------------------- | ------------------------------ |
 | Depends on path costs; often exponential. | Exponential in the worst case. |
 
-#### Depth-Limited Search (DLS):
+#### 3.1.1.4. Depth-Limited Search (DLS):
 DLS is a DFS variant that searches only up to a specified depth limit.
 
 **How it Works:**
@@ -481,7 +484,7 @@ where,
 - b = branching factor
 - l (mama it's not 1, its L means limit) = depth limit
 
-#### Iterative Deepening Search (IDS)
+#### 3.1.1.5. Iterative Deepening Search (IDS)
 IDS combines DFS and BFS. It repeatedly runs DLS with increasing depth limits until the goal is found.
 
 **How it Works:**
@@ -527,7 +530,7 @@ where,
 - b = branching factor
 - d = depth of shallowest goal
 
-#### Quick Recap: 
+#### 3.1.1.6. Quick Recap: 
 | Algorithm | Strategy                                  | Data Structure           | Complete?                    | Optimal?                     |
 | --------- | ----------------------------------------- | ------------------------ | ---------------------------- | ---------------------------- |
 | BFS       | Explore level by level                    | Queue (FIFO)             | Yes                          | Yes (if all costs are equal) |
@@ -536,7 +539,7 @@ where,
 | DLS       | DFS with a depth limit                    | Stack (LIFO) / Recursion | No (if goal is beyond limit) | No                           |
 | IDS       | Repeatedly run DLS with increasing limits | Stack (LIFO) / Recursion | Yes                          | Yes (if all costs are equal) |
 
-## Informed Search: 
+## 3.2. Informed Search: 
 Informed search algorithms use additional knowledge (heuristics) to estimate how close a state is to the goal.
   - A heuristic is a rule or estimate that helps decide which path looks more promising.
 
@@ -555,11 +558,11 @@ Start → A → B → C → D → E → Goal
 Start → A → B → C → D → E → F → G → H → I → J → Goal
 ```
 
-### Informed Search Algorithms:
+### 3.2.1. Informed Search Algorithms:
 
-### Informed Search Algorithms:
+### 3.2.2. Informed Search Algorithms:
 
-#### Greedy Best-First Search:
+#### 3.2.2.1. Greedy Best-First Search:
 
 Greedy Best-First Search chooses the node that appears closest to the goal according to a heuristic value.
 
@@ -622,7 +625,7 @@ where,
 
 ---
 
-#### A* (A-Star) Search:
+#### 3.2.2.2. A* (A-Star) Search:
 
 A* Search combines the actual path cost and the heuristic estimate to find the best path.
 
@@ -691,25 +694,107 @@ because `f(B) = 5` is smaller than `f(C) = 11`.
 | ----------------------------- | ----------------------------- |
 | Exponential in the worst case | Exponential in the worst case |
 
-#### Quick Recap:
+#### 3.2.2.3. Quick Recap:
 | Algorithm                | Strategy                                     | Uses Heuristic?   | Complete? | Optimal?                        |
 | ------------------------ | -------------------------------------------- | ----------------- | --------- | ------------------------------- |
 | Greedy Best-First Search | Choose node that appears closest to the goal | Yes (h(n))        | No        | No                              |
 | A* Search                | Choose node with lowest total estimated cost | Yes (g(n) + h(n)) | Yes       | Yes (with admissible heuristic) |
 
-## Difference Between Uninformed and Informed Search:
 
-| Feature        | Uninformed Search  | Informed Search                  |
-| -------------- | ------------------ | -------------------------------- |
-| Knowledge Used | No extra knowledge | Uses heuristic knowledge         |
-| Search Style   | Blind search       | Guided search                    |
-| Speed          | Usually slower     | Usually faster                   |
-| Nodes Explored | More               | Fewer                            |
-| Efficiency     | Lower              | Higher                           |
-| Examples       | BFS, DFS, UCS      | A*, Greedy Search, Hill Climbing |
+## 3.3. Local Search:
 
-# 3. Home Work 1:
-## 3.1. Question 1: 
+Local search algorithms focus on finding a good solution by moving from one state to a neighboring state. Unlike other search algorithms, they usually do not keep track of the full path from the start state to the goal state.
+
+**Characteristics:**
+- Uses only the current state and its neighbors.
+- Requires very little memory.
+- Often used for optimization problems.
+- Does not usually guarantee the optimal solution.
+- Can get stuck in local optima.
+
+**Example:**
+Imagine trying to reach the highest point on a mountain while standing somewhere on it. At each step, you move to the highest neighboring point until no higher neighbor exists.
+
+```
+      10
+     /  \
+   15    20
+         / \
+       25  18
+```
+
+Traversal:
+
+```
+10 → 20 → 25
+```
+
+The algorithm stops at 25 because there is no higher neighboring state.
+
+### 3.3.1. Local Search Algorithms:
+
+#### 3.3.1.1. Hill Climbing:
+
+Hill Climbing repeatedly moves to the neighboring state with the best value.
+
+**How it Works:**
+
+```
+      5
+     / \
+    8   7
+   /
+ 10
+```
+
+**Traversal:**
+
+```
+5 → 8 → 10
+```
+
+The algorithm always chooses the best neighboring state.
+
+**Steps:**
+- Start with an initial state.
+- Evaluate neighboring states.
+- Move to the best neighbor.
+- Repeat until no better neighbor exists.
+
+**Advantages:**
+- Simple to implement.
+- Uses very little memory.
+- Often finds a good solution quickly.
+
+**Disadvantages:**
+- Can get stuck in local optima.
+- Can get stuck on plateaus.
+- Does not guarantee the optimal solution.
+
+**Time & Space Complexity:**
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(∞) Worst Case | O(1)             |
+
+---
+
+
+
+## 3.4. Difference Between Uninformed, Informed, and Local Search:
+
+| Feature        | Uninformed Search   | Informed Search          | Local Search                                          |
+| -------------- | ------------------- | ------------------------ | ----------------------------------------------------- |
+| Knowledge Used | No extra knowledge  | Uses heuristic knowledge | Uses current state and neighbors                      |
+| Search Style   | Blind search        | Guided search            | Optimization search                                   |
+| Path Tracking  | Yes                 | Yes                      | Usually No                                            |
+| Memory Usage   | Medium to High      | Medium to High           | Low                                                   |
+| Speed          | Usually slower      | Usually faster           | Often very fast                                       |
+| Goal           | Find a path to goal | Find a path efficiently  | Find a good/optimal state                             |
+| Examples       | BFS, DFS, UCS       | Greedy Search, A*        | Hill Climbing, Simulated Annealing, Genetic Algorithm |
+
+# 4. Home Work 1:
+## 4.1. Question 1: 
 ![alt text](./assets/images/home-work-1/question-1.png) 
 
 ![alt text](./assets/images/home-work-1/q1.png)
@@ -729,7 +814,7 @@ D → G (5)
 
 and here our goal is to try to resolve the graph in such a way that states with earlier alphabetical order and expanded first.
 
-### 3.1.1. Answer:
+### 4.1.1. Answer:
 
 - Depth-First Search:  
 
@@ -743,15 +828,15 @@ and here our goal is to try to resolve the graph in such a way that states with 
 
 ![alt text](./assets/images/home-work-1/ucs.png)
 
-## 3.2. Question 2: 
+## 4.2. Question 2: 
 
 ![alt text](./assets/images/home-work-1/q2.png)
-### 3.2.1. Answer:
+### 4.2.1. Answer:
 ![alt text](./assets/images/home-work-1/properties-of-dfs-bfs-ids.png)
 
-## 3.3. Question 3:
+## 4.3. Question 3:
 Briefly explain the main idea behind IDS & DLS search algorithms
 
-### 3.3.1. Answer:
+### 4.3.1. Answer:
 ![alt text](./assets/images/home-work-1/dls.png)
 ![alt text](./assets/images/home-work-1/ids.png)
