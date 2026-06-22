@@ -60,6 +60,9 @@
   - [5.2. Ans to the Question No. 2:](#52-ans-to-the-question-no-2)
   - [5.3. Ans to the Question No. 3:](#53-ans-to-the-question-no-3)
 - [6. CT1 SET B:](#6-ct1-set-b)
+  - [6.1. Ans to the Question 1:](#61-ans-to-the-question-1)
+  - [6.2. Ans to the Question 2:](#62-ans-to-the-question-2)
+  - [6.3. Ans to the Question 3:](#63-ans-to-the-question-3)
 
 # 1. Introduction to Artificial Intelligence:
 
@@ -879,97 +882,58 @@ where,
 - Ensures Non-decreasing f-values
 
 ## 5.3. Ans to the Question No. 3:
-Formula: `f(n)=g(n)+h(n)`
+A* Search Formula: `f(n) = g(n) + h(n)`
 
-where,
-- g(n) = cost from start node to current node
-- h(n) = heuristic value
-- f(n) = total estimated cost
+Selected Nodes: `a → c → d → e → z`
 
-**Step 1: Start from a:**
-
+Calculations:
 ```
-g(a)=0, h(a)=14
-f(a)=0+14=14
-```
-Expand a.
-
-**Step 2: Check neighbors of a:**
-
-```
-b
-g=4, h=12
-f=4+12=16
+c : 3 + 11 = 14
+d : 10 + 6 = 16
+e : 12 + 4 = 16
+z : 17 + 0 = 17
 ```
 
-```
-c
-g=3, h=11
-f=3+11=14
-```
-Choose c because it has the smallest f-value.
-
-**Step 3: Check neighbors of c:**
-```
-d
-g=3+7=10
-f=10+6=16
-```
-```
-e
-g=3+10=13
-f=13+4=17
-```
-
-Current candidates:
-| Node | f   |
-| ---- | --- |
-| b    | 16  |
-| d    | 16  |
-| e    | 17  |
-
-Choose d (or b if your teacher expands ties differently).
-
-**Step 4: Check neighbor of d:**
-
-New cost:
-```
-e
-g=10+2=12
-f=12+4=16
-```
-
-This is better than previous f=17, so update e.
-
-Current candidates:
-| Node | f   |
-| ---- | --- |
-| b    | 16  |
-| e    | 16  |
-
-Choose e.
-
-**Step 5: Check neighbor of e:**
-
-```
-z
-g=12+5=17
-f=17+0=17
-```
-
-Goal node found
-
-**Optimal Path:**
-
-
-![alt text](./assets/images/class-test/ct1-set-a-q3-1.png)
-![alt text](./assets/images/class-test/ct1-set-a-q3-2.png)
-![alt text](./assets/images/class-test/ct1-set-a-q3-3.png)
-![alt text](./assets/images/class-test/ct1-set-a-q3-4.png)
-![alt text](./assets/images/class-test/ct1-set-a-q3-5.png)
+Optimal Path: `a → c → d → e → z`
+Optimal Cost: `3 + 7 + 2 + 5 = 17`
 
 # 6. CT1 SET B: 
+![alt text](./assets/images/class-test/ct1-set-b.png)
 
+## 6.1. Ans to the Question 1:
+A chatbot is designed to communicate with users in a way that makes them believe they are talking to a real person. It focuses on mimicking human conversation, emotions, and behavior.
+ 
+- Which AI approach does this represent?
+  - This represents the Acting Humanly Approach of Artificial Intelligence.
+
+- Why does this approach fit this scenario?
+  - The chatbot imitates human conversation and behavior.
+  - Its goal is to interact naturally with users as if it were a human.
+  - Success is measured by how human-like the chatbot appears during interaction.
+
+## 6.2. Ans to the Question 2: 
+An admissible heuristic is a heuristic that never overestimates the actual minimum cost required to reach the goal node. We need admissible heuristic values because:
+- They guarantee that A* Search finds the optimal (shortest) path.
+- They prevent the algorithm from choosing a path that appears cheaper than it actually is.
+- They improve the efficiency of the search while maintaining correctness.
+- They ensure that the estimated cost to the goal is always realistic and trustworthy.
+
+For Example: If the actual cost from a node to the goal is 10, an admissible heuristic may estimate 8, 9, or 10, but never 11 or more.
+
+## 6.3. Ans to the Question 3: 
+
+A* Formula: `f(n)=g(n)+h(n)`
+
+```
+S → A : g=1, f=6
+
+A → D : g=4, f=6
+
+D → G : g=6, f=6
+```
+
+Optimal Path: `S → A → D → G`ss
+Optimal Cost: `1 + 3 + 2 = 6`
 
 
 
