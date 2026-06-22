@@ -39,6 +39,18 @@
     - [1.15.1. AI Generated (Recommended):](#1151-ai-generated-recommended)
   - [1.16. Strong AI vs Weak AI:](#116-strong-ai-vs-weak-ai)
     - [1.16.1. AI Generated (Recommended):](#1161-ai-generated-recommended)
+- [Agent and Environment:](#agent-and-environment)
+  - [What is Agent:](#what-is-agent)
+  - [Rationality and Autonomy:](#rationality-and-autonomy)
+    - [Rationality:](#rationality)
+    - [Autonomy:](#autonomy)
+  - [Types of Agents:](#types-of-agents)
+    - [Simple Reflex Agent:](#simple-reflex-agent)
+    - [Model-Based Reflex Agent:](#model-based-reflex-agent)
+    - [Goal-Based Agent:](#goal-based-agent)
+    - [Utility-Based Agent:](#utility-based-agent)
+    - [Learning Agent:](#learning-agent)
+  - [Properties of Environments:](#properties-of-environments)
 - [2. Home Work 1:](#2-home-work-1)
   - [2.1. Question 1:](#21-question-1)
     - [2.1.1. Answer:](#211-answer)
@@ -222,6 +234,109 @@ A heuristic system is an AI approach that solves problems using experience-based
 | Intelligence  | Narrow                | General                                |
 | Understanding | No real understanding | Human-like understanding (theoretical) |
 | Existence     | Exists today          | Not yet built                          |
+
+# Agent and Environment:
+## What is Agent: 
+An agent is anything that can perceive its environment through sensors and act upon that environment through actuators to achieve a goal. For examples:
+- Human: Eyes and ears (sensors), hands and legs (actuators).
+- Robot: Cameras and sensors (sensors), motors and wheels (actuators).
+- AI Software: Input data (sensors), generated outputs or actions (actuators).
+
+## Rationality and Autonomy:
+### Rationality: 
+A rational agent chooses the action that is expected to achieve the best outcome based on its knowledge and goals. For example: 
+- A GPS navigation system selects the shortest or fastest route to a destination.
+
+### Autonomy: 
+Autonomy is the ability of an agent to operate independently without constant human intervention. For example: 
+- A self-driving car can make driving decisions on its own.
+
+Note: There are two Levels of Autonomy:
+1. Low autonomy: Requires frequent human control.
+2. High autonomy: Makes most decisions independently.
+
+## Types of Agents:
+1. Simple Reflex Agent: 
+2. Model-Based Reflex Agent
+3. Goal-Based Agent
+4. Utility-Based Agent
+5. Learning Agent
+
+### Simple Reflex Agent:
+Acts only on the current percept using condition-action rules.
+
+Example: 
+- If room is dirty → Vacuum.
+- If room is clean → Do nothing.
+
+Characteristics:
+- No memory
+- No knowledge of past states
+
+### Model-Based Reflex Agent:
+Maintains an internal model (memory) of the environment.
+
+Example:
+- A robot remembers which rooms it has already cleaned.
+
+Characteristics:
+- Uses current percept + internal state
+- Better than simple reflex agents
+
+### Goal-Based Agent:
+Chooses actions based on achieving specific goals.
+
+Example:
+- A navigation system finding a route to a destination.
+
+Characteristics:
+- Considers future outcomes
+- Uses search and planning
+
+### Utility-Based Agent:
+Chooses actions that maximize a utility (preference) measure.
+
+Example:
+- A ride-sharing app choosing the fastest and cheapest route.
+
+Characteristics:
+- Evaluates multiple possible outcomes
+- Selects the most beneficial one
+
+### Learning Agent:
+Improves performance through experience.
+
+Example:
+- A spam filter that becomes better at detecting spam emails over time.
+
+Characteristics:
+- Learns from data and feedback
+- Adapts to new situations
+
+## Properties of Environments: 
+The environment in which an agent operates can be described using several properties such as: 
+1. Fully Observable vs Partially Observable:
+   - Fully observable: Agent can perceive the complete state of the environment. For example: chess game.
+   - Partially observable: Agent cannot see the entire environment.. For example: poker game.
+2. Deterministic vs Stochastic:
+   - Deterministic: Actions always produce predictable results. For example: Solving a math problem
+   - Stochastic: Actions may have uncertain outcomes. For example: Weather forecasting
+3. Episodic vs Sequential:
+   - Episodic: Each decision is independent. For example: Image classification.
+   - Sequential: Current decisions affect future decisions. For example: Chess. 
+4. Static vs Dynamic:
+   - Static: Environment does not change while the agent is making decisions. For example: Crossword puzzle.
+   - Dynamic: Environment can change during decision-making. For example: Driving a car.
+5. Discrete vs Continuous:
+   - Discrete: Finite number of states and actions. For example: Chess.
+   - Continuous: Infinite range of states or actions. For example: Autonomous driving.
+6. Single-Agent vs Multi-Agent:
+   - Single-Agent: Only one agent operates in the environment. For example: Sudoku solver.
+   - Multi-Agent: Multiple agents interact with each other. For example: Football game.
+
+
+
+
 
 # 2. Home Work 1:
 ## 2.1. Question 1: 
