@@ -29,6 +29,22 @@
     - [2.3.4. Utility-Based Agent:](#234-utility-based-agent)
     - [2.3.5. Learning Agent:](#235-learning-agent)
   - [2.4. Properties of Environments:](#24-properties-of-environments)
+- [Searching Algorithms:](#searching-algorithms)
+  - [Uninformed Search:](#uninformed-search)
+    - [Uninformed Search Algorithms:](#uninformed-search-algorithms)
+      - [Breadth-First Search (BFS):](#breadth-first-search-bfs)
+      - [Depth-First Search (DFS):](#depth-first-search-dfs)
+      - [Uniform Cost Search (UCS):](#uniform-cost-search-ucs)
+      - [Depth-Limited Search (DLS):](#depth-limited-search-dls)
+      - [Iterative Deepening Search (IDS)](#iterative-deepening-search-ids)
+      - [Quick Recap:](#quick-recap)
+  - [Informed Search:](#informed-search)
+    - [Informed Search Algorithms:](#informed-search-algorithms)
+    - [Informed Search Algorithms:](#informed-search-algorithms-1)
+      - [Greedy Best-First Search:](#greedy-best-first-search)
+      - [A\* (A-Star) Search:](#a-a-star-search)
+      - [Quick Recap:](#quick-recap-1)
+  - [Difference Between Uninformed and Informed Search:](#difference-between-uninformed-and-informed-search)
 - [3. Home Work 1:](#3-home-work-1)
   - [3.1. Question 1:](#31-question-1)
     - [3.1.1. Answer:](#311-answer)
@@ -269,6 +285,428 @@ The environment in which an agent operates can be described using several proper
 
 
 
+# Searching Algorithms:
+In Artificial Intelligence, search algorithms are often divided into two categories:
+1. Uninformed Search
+2. Informed Search 
+   
+## Uninformed Search:
+Uninformed search algorithms have no extra information about how close a state is to the goal. They only know:
+- The initial state
+- The possible actions
+- The goal test
+
+**Characteristics:**
+- No heuristic knowledge is used.
+- Searches blindly through possible states.
+- Usually explores more nodes.
+- Can be slower for large problems.
+
+**Example:**
+Imagine finding a treasure in a maze(গোলকধাঁধা) without any clues. You keep checking paths until you find it.
+
+```
+Start
+  |
+ / \
+A   B
+|   |
+C   Goal
+```
+
+### Uninformed Search Algorithms:
+#### Breadth-First Search (BFS):
+BFS explores nodes level by level. It visits all nodes at the current depth before moving to the next depth.
+
+**How it Works:**
+```
+      A
+    /   \
+   B     C
+  / \   / \
+ D   E F   G
+```
+**Traversal order:** `A → B → C → D → E → F → G`
+
+**Data Structure:** Queue (FIFO: First In, First Out)
+
+**Steps:** 
+- Start at the root node.
+- Visit the node.
+- Add its children to the queue.
+- Remove the first node from the queue and repeat.
+
+**Advantages:**
+- Complete (finds a solution if one exists).
+- Finds the shortest path when all costs are equal.
+
+**Disadvantages:**
+- Uses a lot of memory.
+- Slow for deep trees.
+
+**Time & Space Complexity:**
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(bᵈ)           | O(bᵈ)            |
+
+where,
+- b = branching factor
+- d = depth of shallowest goal
+
+#### Depth-First Search (DFS):
+DFS explores one branch as deep as possible before backtracking.
+
+**How it Works:**
+```
+      A
+    /   \
+   B     C
+  / \   / \
+ D   E F   G
+```
+**Traversal order:** `A → B → D → E → C → F → G`
+
+**Data Structure:** Stack (LIFO: Last In, First Out) Or recursion
+
+**Steps:** 
+- Visit a node.
+- Go to its first child.
+- Continue deeper until no child exists.
+- Backtrack and explore remaining branches.
+
+**Advantages:**
+- Requires less memory.
+- Easy to implement.
+
+**Disadvantages:**
+- May get stuck in deep or infinite paths.
+- Does not guarantee the shortest path.
+
+**Time & Space Complexity:**
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(bᵐ)           | O(bm)            |
+
+where,
+- m = maximum depth
+
+#### Uniform Cost Search (UCS):
+UCS expands the node with the lowest path cost first. Unlike BFS, UCS considers edge costs.
+
+**How it Works:**
+```
+      A
+    /   \
+   B(2) C(1)
+    |     |
+ Goal(3) Goal(10)
+```
+
+**Possible paths:**
+```
+A → B → Goal = 5
+A → C → Goal = 11
+```
+
+**UCS chooses:**
+```
+A → B → Goal
+```
+because cost 5 is lower.
+
+**Data Structure:** Priority Queue (Min Heap)
+
+**Steps:** 
+- Start at the root node.
+- Visit the lowest-cost node.
+- Add its children with their costs.
+- Choose the lowest-cost node again.
+- Repeat until the goal is found.
+
+**Advantages:**
+- Complete.
+- Finds the optimal (lowest-cost) solution.
+
+**Disadvantages:**
+- Can use large memory.
+- May explore many nodes.
+
+**Time & Space Complexity:**
+| Time Complexity                           | Space Complexity               |
+| ----------------------------------------- | ------------------------------ |
+| Depends on path costs; often exponential. | Exponential in the worst case. |
+
+#### Depth-Limited Search (DLS):
+DLS is a DFS variant that searches only up to a specified depth limit.
+
+**How it Works:**
+```
+        A
+      /   \
+     B     C
+    / \
+   D   E
+  /
+ F
+```
+
+Depth Limit = 2
+
+**Traversal order:** `A → B → D → E → C`
+Note: (F is not visited because it is beyond the depth limit.)
+
+**Data Structure:** Stack (LIFO) or recursion
+
+**Steps:** 
+- Start at the root node.
+- Visit the node.
+- Go deeper to its children.
+- Stop when the depth limit is reached.
+- Backtrack and explore other branches.
+
+**Advantages:**
+- Uses less memory than BFS.
+- Prevents searching infinitely deep paths.
+
+**Disadvantages:**
+- May miss the goal if it is beyond the depth limit.
+- Does not guarantee the shortest path.
+
+**Time & Space Complexity:**
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(bˡ)           | O(bl)            |
+
+where,
+- b = branching factor
+- l (mama it's not 1, its L means limit) = depth limit
+
+#### Iterative Deepening Search (IDS)
+IDS combines DFS and BFS. It repeatedly runs DLS with increasing depth limits until the goal is found.
+
+**How it Works:**
+```
+        A
+      /   \
+     B     C
+    / \   / \
+   D   E F   G
+```
+**Traversal order:**
+- Depth Limit = 0: `A`
+- Depth Limit = 1: `A → B → C`
+- Depth Limit = 2: `A → B → D → E → C → F → G`
+
+The search continues with larger depth limits until the goal is found.
+
+
+**Data Structure:** Stack (LIFO) or recursion
+
+**Steps:** 
+- Start with depth limit 0.
+- Perform DLS.
+- If the goal is not found, increase the depth limit.
+- Run DLS again.
+- Repeat until the goal is found.
+
+**Advantages:**
+- Complete.
+- Finds the shortest path when all costs are equal.
+- Uses less memory than BFS.
+
+**Disadvantages:**
+- Repeats searching the same nodes multiple times.
+- Can be slower than BFS.
+
+**Time & Space Complexity:**
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(bᵈ)           | O(bd)            |
+
+where,
+- b = branching factor
+- d = depth of shallowest goal
+
+#### Quick Recap: 
+| Algorithm | Strategy                                  | Data Structure           | Complete?                    | Optimal?                     |
+| --------- | ----------------------------------------- | ------------------------ | ---------------------------- | ---------------------------- |
+| BFS       | Explore level by level                    | Queue (FIFO)             | Yes                          | Yes (if all costs are equal) |
+| DFS       | Go as deep as possible                    | Stack (LIFO) / Recursion | No (for infinite depth)      | No                           |
+| UCS       | Choose the lowest-cost path               | Priority Queue           | Yes                          | Yes                          |
+| DLS       | DFS with a depth limit                    | Stack (LIFO) / Recursion | No (if goal is beyond limit) | No                           |
+| IDS       | Repeatedly run DLS with increasing limits | Stack (LIFO) / Recursion | Yes                          | Yes (if all costs are equal) |
+
+## Informed Search: 
+Informed search algorithms use additional knowledge (heuristics) to estimate how close a state is to the goal.
+  - A heuristic is a rule or estimate that helps decide which path looks more promising.
+
+**Characteristics:**
+- Uses heuristic information.
+- Searches more intelligently.
+- Usually explores fewer nodes.
+- Often faster than uninformed search.
+
+**Example:**
+Imagine finding a treasure in a maze while having a map that shows which direction is closer to the treasure. 
+
+```
+Start → A → B → Goal (Most close direction to goal)
+Start → A → B → C → D → E → Goal
+Start → A → B → C → D → E → F → G → H → I → J → Goal
+```
+
+### Informed Search Algorithms:
+
+### Informed Search Algorithms:
+
+#### Greedy Best-First Search:
+
+Greedy Best-First Search chooses the node that appears closest to the goal according to a heuristic value.
+
+**Heuristic Function:**
+
+```
+h(n) = Estimated cost from node n to the goal
+```
+
+**How it Works:**
+
+```
+        A
+      /   \
+   B(4)   C(2)
+   /         \
+Goal(1)    Goal(5)
+```
+
+The numbers represent heuristic values h(n).
+
+**Greedy chooses:**
+
+```
+A → C
+```
+
+because `h(C) = 2` is smaller than `h(B) = 4`.
+
+**Data Structure:** Priority Queue (ordered by heuristic value h(n))
+
+**Steps:**
+
+* Start at the root node.
+* Check the heuristic value of each child.
+* Choose the node that seems closest to the goal.
+* Visit that node.
+* Repeat until the goal is found.
+
+**Advantages:**
+
+* Often faster than uninformed search.
+* Usually explores fewer nodes.
+
+**Disadvantages:**
+
+* Not guaranteed to find the shortest path.
+* Can be misled by a poor heuristic.
+
+**Time & Space Complexity:**
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(bᵐ)           | O(bᵐ)            |
+
+where,
+
+* b = branching factor
+* m = maximum depth
+
+---
+
+#### A* (A-Star) Search:
+
+A* Search combines the actual path cost and the heuristic estimate to find the best path.
+
+**Evaluation Function:**
+
+```
+f(n) = g(n) + h(n)
+```
+
+where,
+
+* g(n) = actual cost from the start node to n
+* h(n) = estimated cost from n to the goal
+* f(n) = total estimated cost
+
+**How it Works:**
+
+```
+        A
+      /   \
+   B       C
+ g=2     g=1
+ h=3     h=10
+```
+
+**Calculate f(n):**
+
+```
+f(B) = 2 + 3 = 5
+f(C) = 1 + 10 = 11
+```
+
+**A* chooses:**
+
+```
+A → B
+```
+
+because `f(B) = 5` is smaller than `f(C) = 11`.
+
+**Data Structure:** Priority Queue (ordered by f(n))
+
+**Steps:**
+
+* Start at the root node.
+* Calculate f(n) = g(n) + h(n).
+* Choose the node with the lowest f(n).
+* Visit that node.
+* Update costs for its children.
+* Repeat until the goal is found.
+
+**Advantages:**
+
+* Complete.
+* Finds the optimal path when the heuristic is admissible.
+* Usually explores fewer nodes than UCS.
+
+**Disadvantages:**
+
+* Uses a lot of memory.
+* Performance depends on the quality of the heuristic.
+
+**Time & Space Complexity:**
+
+| Time Complexity               | Space Complexity              |
+| ----------------------------- | ----------------------------- |
+| Exponential in the worst case | Exponential in the worst case |
+
+#### Quick Recap:
+| Algorithm                | Strategy                                     | Uses Heuristic?   | Complete? | Optimal?                        |
+| ------------------------ | -------------------------------------------- | ----------------- | --------- | ------------------------------- |
+| Greedy Best-First Search | Choose node that appears closest to the goal | Yes (h(n))        | No        | No                              |
+| A* Search                | Choose node with lowest total estimated cost | Yes (g(n) + h(n)) | Yes       | Yes (with admissible heuristic) |
+
+## Difference Between Uninformed and Informed Search:
+
+| Feature        | Uninformed Search  | Informed Search                  |
+| -------------- | ------------------ | -------------------------------- |
+| Knowledge Used | No extra knowledge | Uses heuristic knowledge         |
+| Search Style   | Blind search       | Guided search                    |
+| Speed          | Usually slower     | Usually faster                   |
+| Nodes Explored | More               | Fewer                            |
+| Efficiency     | Lower              | Higher                           |
+| Examples       | BFS, DFS, UCS      | A*, Greedy Search, Hill Climbing |
 
 # 3. Home Work 1:
 ## 3.1. Question 1: 
