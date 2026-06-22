@@ -55,6 +55,11 @@
     - [4.2.1. Answer:](#421-answer)
   - [4.3. Question 3:](#43-question-3)
     - [4.3.1. Answer:](#431-answer)
+- [5. CT1 SET A:](#5-ct1-set-a)
+  - [5.1. Ans to the Question No. 1:](#51-ans-to-the-question-no-1)
+  - [5.2. Ans to the Question No. 2:](#52-ans-to-the-question-no-2)
+  - [5.3. Ans to the Question No. 3:](#53-ans-to-the-question-no-3)
+- [6. CT1 SET B:](#6-ct1-set-b)
 
 # 1. Introduction to Artificial Intelligence:
 
@@ -840,3 +845,132 @@ Briefly explain the main idea behind IDS & DLS search algorithms
 ### 4.3.1. Answer:
 ![alt text](./assets/images/home-work-1/dls.png)
 ![alt text](./assets/images/home-work-1/ids.png)
+
+
+# 5. CT1 SET A:
+![alt text](./assets/images/class-test/ct1-set-a.png)
+## 5.1. Ans to the Question No. 1: 
+| Thinking Logically                                                                 | Acting Logically                                                           |
+| ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Focuses on correct reasoning and drawing logical conclusions.                      | Focuses on taking actions that achieve goals successfully.                 |
+| Uses formal logic and inference rules.                                             | Uses rational behavior and decision making.                                |
+| An action may not be taken even if it is useful unless it can be logically proven. | May act with incomplete information if it increases the chance of success. |
+| Example: Proving a mathematical theorem.                                           | Example: A self-driving car choosing the safest route.                     |
+
+**Two Key Differences:**
+- Thinking logically emphasizes correct reasoning, while acting logically emphasizes achieving goals.
+- Thinking logically relies on formal logic, while acting logically relies on rational actions and outcomes.
+
+## 5.2. Ans to the Question No. 2:
+A heuristic is consistent (monotonic) if:
+```
+h(n)≤c(n,n′)+h(n′)
+```
+
+where,
+- h(n) = heuristic value of current node
+- c(n,n′) = cost from node n to successor n′
+- h(n′) = heuristic value of successor node
+
+**Why consistency is important:**
+- Guarantees Optimal Solution
+- Avoids Re-expanding Nodes
+- Improves Efficiency
+- Ensures Non-decreasing f-values
+
+## 5.3. Ans to the Question No. 3:
+Formula: `f(n)=g(n)+h(n)`
+
+where,
+- g(n) = cost from start node to current node
+- h(n) = heuristic value
+- f(n) = total estimated cost
+
+**Step 1: Start from a:**
+
+```
+g(a)=0, h(a)=14
+f(a)=0+14=14
+```
+Expand a.
+
+**Step 2: Check neighbors of a:**
+
+```
+b
+g=4, h=12
+f=4+12=16
+```
+
+```
+c
+g=3, h=11
+f=3+11=14
+```
+Choose c because it has the smallest f-value.
+
+**Step 3: Check neighbors of c:**
+```
+d
+g=3+7=10
+f=10+6=16
+```
+```
+e
+g=3+10=13
+f=13+4=17
+```
+
+Current candidates:
+| Node | f   |
+| ---- | --- |
+| b    | 16  |
+| d    | 16  |
+| e    | 17  |
+
+Choose d (or b if your teacher expands ties differently).
+
+**Step 4: Check neighbor of d:**
+
+New cost:
+```
+e
+g=10+2=12
+f=12+4=16
+```
+
+This is better than previous f=17, so update e.
+
+Current candidates:
+| Node | f   |
+| ---- | --- |
+| b    | 16  |
+| e    | 16  |
+
+Choose e.
+
+**Step 5: Check neighbor of e:**
+
+```
+z
+g=12+5=17
+f=17+0=17
+```
+
+Goal node found
+
+**Optimal Path:**
+
+
+![alt text](./assets/images/class-test/ct1-set-a-q3-1.png)
+![alt text](./assets/images/class-test/ct1-set-a-q3-2.png)
+![alt text](./assets/images/class-test/ct1-set-a-q3-3.png)
+![alt text](./assets/images/class-test/ct1-set-a-q3-4.png)
+![alt text](./assets/images/class-test/ct1-set-a-q3-5.png)
+
+# 6. CT1 SET B: 
+
+
+
+
+
