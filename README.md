@@ -55,6 +55,10 @@
     - [4.2.1. Answer:](#421-answer)
   - [4.3. Question 3:](#43-question-3)
     - [4.3.1. Answer:](#431-answer)
+  - [4.4. Question 4:](#44-question-4)
+    - [Answer:](#answer)
+  - [Question 5:](#question-5)
+    - [Answer:](#answer-1)
 - [5. CT1 SET A:](#5-ct1-set-a)
   - [5.1. Ans to the Question No. 1:](#51-ans-to-the-question-no-1)
   - [5.2. Ans to the Question No. 2:](#52-ans-to-the-question-no-2)
@@ -848,6 +852,30 @@ Briefly explain the main idea behind IDS & DLS search algorithms
 ### 4.3.1. Answer:
 ![alt text](./assets/images/home-work-1/dls.png)
 ![alt text](./assets/images/home-work-1/ids.png)
+
+## 4.4. Question 4: 
+In Interactive Depending search & Depth limited search we visit upper position of the graph tree multiple time. It increase the time complexity, still how it is better than BFS & DFS? 
+
+### Answer: 
+
+Although IDS and DLS visit some upper-level nodes multiple times, but they are still better than BFS and DFS in many cases:
+- IDS uses less memory than BFS.
+- IDS can still find the shallowest (optimal) solution, like BFS (when all step costs are equal).
+- DLS prevents searching too deep, so it avoids the infinite-depth problem of DFS.
+- The repeated node visits are few, so the extra time is usually acceptable.
+
+So IDS and DLS are better because they use less memory, avoid unnecessary deep searches, and IDS can still find the shallowest solution.
+
+## Question 5: 
+Imagine a scenario where you are search in a graph like google map, but it is more advance, hundreds of nodes can be added instantly. Its gives you a fell that the tree has an infinite depth. In that case to search in the graph for a goal node which one you will choose among BFS & DFS. Justify your answer with proper reasoning.
+
+### Answer: 
+I would choose BFS (Breadth-First Search). Because of:
+- In a graph that feels like it has infinite depth, DFS may keep exploring one path forever and may never reach the goal.
+- BFS explores the graph level by level, so if the goal exists at a finite depth, BFS is guaranteed to find it.
+- Although BFS uses more memory, it is more reliable for finding a solution in an infinite-depth graph.
+
+so i Choose BFS because it searches level by level and is guaranteed to find the goal (if one exists), whereas DFS may get stuck exploring an infinite path and never find the goal.
 
 
 # 5. CT1 SET A:
