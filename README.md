@@ -56,9 +56,47 @@
   - [4.3. Question 3:](#43-question-3)
     - [4.3.1. Answer:](#431-answer)
   - [4.4. Question 4:](#44-question-4)
-    - [Answer:](#answer)
-  - [Question 5:](#question-5)
-    - [Answer:](#answer-1)
+    - [4.4.1. Answer:](#441-answer)
+  - [4.5. Question 5:](#45-question-5)
+    - [4.5.1. Answer:](#451-answer)
+  - [4.6. Question 6:](#46-question-6)
+    - [4.6.1. Answer:](#461-answer)
+  - [4.7. Question 7:](#47-question-7)
+    - [4.7.1. Answer:](#471-answer)
+  - [4.8. Question 8:](#48-question-8)
+    - [4.8.1. Answer:](#481-answer)
+      - [4.8.1.1. (i) Greedy Best-First Search:](#4811-i-greedy-best-first-search)
+      - [4.8.1.2. (ii) A\* Search:](#4812-ii-a-search)
+  - [4.9. Question 9:](#49-question-9)
+    - [4.9.1. Anser:](#491-anser)
+      - [4.9.1.1. Consistency:](#4911-consistency)
+      - [4.9.1.2. Admissibility:](#4912-admissibility)
+      - [4.9.1.3. Why should heuristic values be Consistent and Admissible?](#4913-why-should-heuristic-values-be-consistent-and-admissible)
+  - [4.10. Question 10:](#410-question-10)
+    - [4.10.1. Answer:](#4101-answer)
+  - [4.11. Question 11:](#411-question-11)
+    - [4.11.1. Answer:](#4111-answer)
+      - [4.11.1.1. (i) Heuristic: Number of Misplaced Tiles:](#41111-i-heuristic-number-of-misplaced-tiles)
+      - [4.11.1.2. (ii) Heuristic: Manhattan Distance:](#41112-ii-heuristic-manhattan-distance)
+      - [4.11.1.3. (iii) Heuristic: Euclidean Distance:](#41113-iii-heuristic-euclidean-distance)
+  - [4.12. Question 12:](#412-question-12)
+    - [4.12.1. Answer:](#4121-answer)
+  - [4.13. Question 13:](#413-question-13)
+    - [4.13.1. Answer:](#4131-answer)
+  - [4.14. Question 14:](#414-question-14)
+    - [4.14.1. Answer:](#4141-answer)
+  - [4.15. Question 15:](#415-question-15)
+    - [4.15.1. Answer:](#4151-answer)
+  - [4.16. Question 16:](#416-question-16)
+    - [4.16.1. Answer:](#4161-answer)
+  - [4.17. Question 17:](#417-question-17)
+    - [4.17.1. Answer:](#4171-answer)
+  - [4.18. Question 18:](#418-question-18)
+    - [4.18.1. Answer:](#4181-answer)
+  - [4.19. Question 19:](#419-question-19)
+    - [4.19.1. Answer:](#4191-answer)
+  - [4.20. Question 20:](#420-question-20)
+    - [4.20.1. Answer:](#4201-answer)
 - [5. CT1 SET A:](#5-ct1-set-a)
   - [5.1. Ans to the Question No. 1:](#51-ans-to-the-question-no-1)
   - [5.2. Ans to the Question No. 2:](#52-ans-to-the-question-no-2)
@@ -856,7 +894,7 @@ Briefly explain the main idea behind IDS & DLS search algorithms
 ## 4.4. Question 4: 
 In Interactive Depending search & Depth limited search we visit upper position of the graph tree multiple time. It increase the time complexity, still how it is better than BFS & DFS? 
 
-### Answer: 
+### 4.4.1. Answer: 
 
 Although IDS and DLS visit some upper-level nodes multiple times, but they are still better than BFS and DFS in many cases:
 - IDS uses less memory than BFS.
@@ -866,10 +904,10 @@ Although IDS and DLS visit some upper-level nodes multiple times, but they are s
 
 So IDS and DLS are better because they use less memory, avoid unnecessary deep searches, and IDS can still find the shallowest solution.
 
-## Question 5: 
+## 4.5. Question 5: 
 Imagine a scenario where you are search in a graph like google map, but it is more advance, hundreds of nodes can be added instantly. Its gives you a fell that the tree has an infinite depth. In that case to search in the graph for a goal node which one you will choose among BFS & DFS. Justify your answer with proper reasoning.
 
-### Answer: 
+### 4.5.1. Answer: 
 I would choose BFS (Breadth-First Search). Because of:
 - In a graph that feels like it has infinite depth, DFS may keep exploring one path forever and may never reach the goal.
 - BFS explores the graph level by level, so if the goal exists at a finite depth, BFS is guaranteed to find it.
@@ -877,6 +915,400 @@ I would choose BFS (Breadth-First Search). Because of:
 
 so i Choose BFS because it searches level by level and is guaranteed to find the goal (if one exists), whereas DFS may get stuck exploring an infinite path and never find the goal.
 
+## 4.6. Question 6:
+Imagine a scenario where you are searching in a very depth graph, depth size around 5 million, and you know that the goal node is not the shallow depth. Goal node belongs to the very depth for example 3.8 million depth your goal is present. In that case to search in the graph for a goal node, which one you will choose among BFS & DFS. Justify your answer with proper reasoning. 
+
+### 4.6.1. Answer: 
+I would choose DFS (Depth-First Search) because: 
+- The goal node is very deep (around 3.8 million levels).
+- BFS would have to store all nodes at every level before reaching the goal, which requires a huge amount of memory.
+- DFS goes deep into the graph quickly and uses much less memory.
+- Since we already know the goal is at a very deep level, DFS is the better choice.
+
+So Choose DFS because the goal is very deep, and DFS reaches deep nodes faster while using much less memory than BFS.
+
+## 4.7. Question 7: 
+What you understand by the term "Heuristic". provide an example of heuristic. 
+
+### 4.7.1. Answer:
+A heuristic is a rule of thumb or an estimate that helps a search algorithm decide which path is more likely to reach the goal faster. It does not always guarantee the best solution, but it usually finds a good solution more efficiently.
+
+Example: In Google Maps, the straight-line distance from your current location to your destination is used as a heuristic. The algorithm uses this estimate to choose roads that are likely to reach the destination faster.
+
+## 4.8. Question 8: 
+![alt text](./assets/images/home-work-1/question-8.png)
+
+
+
+### 4.8.1. Answer:
+From the graph:
+- Heuristic values:
+  - h(S)=6
+  - h(a)=5
+  - h(b)=6
+  - h(c)=7
+  - h(d)=2
+  - h(e)=1
+  - h(G)=0
+- Edge costs:
+  - S → a = 1
+  - a → b = 1
+  - b → c = 1
+  - a → d = 3
+  - a → e = 8
+  - e → d = 1
+  - d → G = 2
+
+#### 4.8.1.1. (i) Greedy Best-First Search:
+Greedy Best-First Search always selects the node with the smallest heuristic value (h).
+
+| Step | Frontier               | Selected Node |
+| ---- | ---------------------- | ------------- |
+| 1    | S                      | S             |
+| 2    | a(h=5)                 | a             |
+| 3    | b(h=6), d(h=2), e(h=1) | e             |
+| 4    | b(h=6), d(h=2)         | d             |
+| 5    | b(h=6), G(h=0)         | G (Goal)      |
+
+Expansion Order: `S → a → e → d → G`
+Path Found: `S → a → e → d → G`
+Path Cost: `1 + 8 + 1 + 2 = 12`
+
+#### 4.8.1.2. (ii) A* Search:
+A* uses the formula `f(n) = g(n) + h(n)` to select nodes.
+
+where, 
+- g(n) = path cost from Start
+- h(n) = heuristic estimate
+
+| Node | g(n) | h(n) | f(n)=g+h |
+| ---- | ---: | ---: | -------: |
+| S    |    0 |    6 |        6 |
+| a    |    1 |    5 |        6 |
+| b    |    2 |    6 |        8 |
+| d    |    4 |    2 |        6 |
+| e    |    9 |    1 |       10 |
+| G    |    6 |    0 |        6 |
+
+Expansion Order: `S → a → d → G`
+Optimal Path: `S → a → d → G`
+Total Cost: `1 + 3 + 2 = 6`
+
+## 4.9. Question 9: 
+Explain the consistency & admissibility of heuristic value. Why the heuristic values need to be consistent & admissible?
+
+### 4.9.1. Anser: 
+
+#### 4.9.1.1. Consistency: 
+A heuristic is consistent if the estimated cost from a node to the goal is never greater than the cost of going to a neighboring node plus that neighbor's heuristic.
+
+Formula: `h(n) ≤ c(n, n') + h(n')`
+where:
+- h(n) = heuristic of current node
+- c(n, n') = cost from current node to next node
+- h(n') = heuristic of next node
+
+Simple Example:
+- h(A) = 5
+- Cost A → B = 2
+- h(B) = 3
+
+Since:
+
+```
+5 ≤ 2 + 3
+5 ≤ 5 ✔
+```
+
+The heuristic is consistent.
+
+#### 4.9.1.2. Admissibility:
+A heuristic is admissible if it never overestimates the actual minimum cost to reach the goal.
+
+Formula: `h(n) ≤ Actual Cost to Goal`
+
+Simple Example: 
+Actual cost from A to Goal = 7
+- h(A) = 5 ✔ (Admissible)
+- h(A) = 7 ✔ (Admissible)
+- h(A) = 9 ✘ (Not admissible because it overestimates)
+
+#### 4.9.1.3. Why should heuristic values be Consistent and Admissible?
+- Admissibility ensures that algorithms like A* can find the optimal (lowest-cost) path.
+- Consistency ensures that the heuristic values are logical and prevents unnecessary re-expansion of nodes, making the search more efficient.
+
+## 4.10. Question 10:
+Is it possible to be a heuristic value that is admissible but not consistent? if yes, then provide an example.
+
+### 4.10.1. Answer: 
+
+Yes. A heuristic can be admissible but not consistent. This happens when the heuristic never overestimates the actual cost to the goal (admissible), but violates the consistency condition.
+
+**Example:**
+Consider the graph: `A --2--> B --2--> Goal`
+Heuristic values: 
+```
+h(A) = 3
+h(B) = 0
+h(Goal) = 0
+```
+
+Actual costs to the goal:
+- From A = 4
+- From B = 2
+
+**Check Admissibility:**
+- h(A) = 3 ≤ 4 ✔
+- h(B) = 0 ≤ 2 ✔
+
+So, the heuristic is admissible.
+
+**Check Consistency:**
+Consistency requires: `h(A) ≤ Cost(A,B) + h(B)`
+Substitute the values: 
+```
+3 ≤ 2 + 0
+3 ≤ 2 ✘
+```
+
+This is false, so the heuristic is not consistent.
+
+## 4.11. Question 11:
+![alt text](./assets/images/home-work-1/question-11.png)
+
+### 4.11.1. Answer: 
+For this question, they are asking you to calculate the heuristic values for the given start state using three heuristic functions. You do not need to solve the entire puzzle—just compute the heuristic values.
+
+Start State:
+```
+7 2 4
+5 _ 6
+8 3 1
+```
+
+Goal State:
+```
+_ 1 2
+3 4 5
+6 7 8
+```
+
+#### 4.11.1.1. (i) Heuristic: Number of Misplaced Tiles:
+Count how many tiles are not in their correct position (ignore the blank).
+
+| Tile | Correct Position? |
+| ---- | ----------------- |
+| 1    | ✘                 |
+| 2    | ✘                 |
+| 3    | ✘                 |
+| 4    | ✘                 |
+| 5    | ✘                 |
+| 6    | ✘                 |
+| 7    | ✘                 |
+| 8    | ✔                 |
+
+Misplaced tiles = 7
+Answer: `h(n) = 7`
+
+#### 4.11.1.2. (ii) Heuristic: Manhattan Distance:
+Manhattan Distance = Horizontal moves + Vertical moves for each tile.
+| Tile | Distance |
+| ---- | -------: |
+| 1    |        3 |
+| 2    |        1 |
+| 3    |        2 |
+| 4    |        2 |
+| 5    |        2 |
+| 6    |        3 |
+| 7    |        3 |
+| 8    |        0 |
+
+Total: `3 + 1 + 2 + 2 + 2 + 3 + 3 + 0 = 16`
+Answer: `h(n) = 16`
+
+#### 4.11.1.3. (iii) Heuristic: Euclidean Distance:
+Euclidean Distance uses the formula: `√((x₂ − x₁)² + (y₂ − y₁)²)`
+Calculate the distance for every tile and add them:
+| Tile | Distance (Approx.) |
+| ---- | -----------------: |
+| 1    |               2.24 |
+| 2    |               1.00 |
+| 3    |               2.00 |
+| 4    |               2.00 |
+| 5    |               1.41 |
+| 6    |               2.24 |
+| 7    |               2.24 |
+| 8    |               0.00 |
+
+Total: `≈ 13.13`
+Answer: `h(n) ≈ 13.13`
+
+## 4.12. Question 12: 
+Briefly explain what is ai agent? Also explain every type of ai agent with example.
+
+### 4.12.1. Answer: 
+**What is an AI Agent:** An AI agent is a system that perceives its environment through sensors and takes actions through actuators to achieve a goal. 
+
+**Types of AI Agents:**
+- Simple Reflex Agent: A thermostat turns on the AC when the temperature becomes too high.
+- Model-Based Reflex Agent: A robot vacuum remembers where it has already cleaned.
+- Goal-Based Agent: Google Maps finds the best route to reach a destination.
+- Utility-Based Agent: A self-driving car chooses the safest and fastest route.
+- learning Agent: Netflix or YouTube recommends better content based on your watching history.
+
+## 4.13. Question 13:
+Briefly explain every type of environment with an example of agent who is suitable for that environment.
+
+### 4.13.1. Answer:
+| Environment Type     | Meaning                          | Example              | Suitable Agent           |
+| -------------------- | -------------------------------- | -------------------- | ------------------------ |
+| Fully Observable     | Complete information available   | Chess                | Simple Reflex Agent      |
+| Partially Observable | Some information is hidden       | Self-driving car     | Model-Based Reflex Agent |
+| Deterministic        | Same action gives same result    | Math problem         | Goal-Based Agent         |
+| Stochastic           | Outcome is uncertain             | Driving in traffic   | Utility-Based Agent      |
+| Episodic             | Each task is independent         | Image classification | Simple Reflex Agent      |
+| Sequential           | Current action affects future    | Chess                | Goal-Based Agent         |
+| Static               | Environment does not change      | Crossword puzzle     | Goal-Based Agent         |
+| Dynamic              | Environment changes over time    | Self-driving car     | Utility-Based Agent      |
+| Discrete             | Finite states/actions            | Chess                | Goal-Based Agent         |
+| Continuous           | Infinite possible states/actions | Robot arm            | Utility-Based Agent      |
+| Single-Agent         | One agent only                   | Sudoku solver        | Goal-Based Agent         |
+| Multi-Agent          | Multiple interacting agents      | Football robots      | Utility-Based Agent      |
+
+## 4.14. Question 14:
+Briefly explain the term artificial intelligence.\
+
+### 4.14.1. Answer:
+Artificial Intelligence (AI) is the branch of computer science that develops machines or computer systems capable of performing tasks that normally require human intelligence, such as learning, reasoning, problem-solving, decision-making, and understanding language.
+
+Example: ChatGPT, self-driving cars, Google Maps, and virtual assistants like Siri and Google Assistant are examples of AI systems.
+
+## 4.15. Question 15:
+Briefly explain what is Turing Test. Why we use this test?
+
+### 4.15.1. Answer:
+**What is the Turing Test:**
+
+The Turing Test was proposed by Alan Turing in 1950 to determine whether a machine can exhibit human-like intelligence.
+
+In this test, a human judge communicates with both a human and a machine through text without knowing which is which. If the judge cannot reliably distinguish the machine from the human, the machine is said to have passed the Turing Test.
+
+**Why do we use the Turing Test:**
+- To check whether a machine can think and behave like a human.
+- To evaluate the intelligence of an AI system.
+- To measure how well an AI can communicate.
+
+## 4.16. Question 16: 
+Briefly explain the 4 goals of AI: 
+- Thinking humanly
+- Thinking rationally
+- Acting humanly
+- Acting rationally
+
+### 4.16.1. Answer:
+- Thinking Humanly:
+  - AI tries to think like a human by imitating human reasoning and learning.
+  - It focuses on how humans solve problems and make decisions.
+  - Example: An AI system that learns and solves problems like a human student.
+- Thinking Rationally:
+  - AI tries to think logically and make decisions based on reasoning and facts.
+  - It focuses on drawing conclusions and making inferences.
+  - Example: A medical diagnosis system that uses logical rules to determine the best treatment.
+- Acting Humanly:
+  - AI tries to act like a human by mimicking human behavior and interactions.
+  - It focuses on communication, emotions, and social interactions.
+  - Example: A chatbot that can hold a conversation like a human.
+- Acting Rationally:
+  - AI tries to act in a way that maximizes the chances of achieving its goals.
+  - It focuses on making decisions and taking actions that lead to the best outcomes.
+  - Example: A self-driving car that chooses the safest and fastest route to reach its destination.
+
+Summary: 
+| Goal of AI              | Meaning                      | Example          |
+| ----------------------- | ---------------------------- | ---------------- |
+| **Thinking Humanly**    | Thinks like a human          | AI student/tutor |
+| **Thinking Rationally** | Thinks logically using rules | Chess program    |
+| **Acting Humanly**      | Behaves like a human         | ChatGPT, Siri    |
+| **Acting Rationally**   | Chooses the best action      | Self-driving car |
+
+## 4.17. Question 17:
+Write a very short AI agents description passage that matches with thinking humanly & acting humanly.
+
+### 4.17.1. Answer: 
+AI agents that follow the goals of thinking humanly and acting humanly are designed to think and behave like humans. They learn, reason, solve problems, and communicate naturally so that their actions closely resemble those of a real person.
+
+## 4.18. Question 18:
+Solve CT1 Question
+
+### 4.18.1. Answer: 
+- https://github.com/tamim-111/ai#5-ct1-set-a
+- https://github.com/tamim-111/ai#6-ct1-set-b
+
+
+## 4.19. Question 19:
+Briefly explain local search, why we use local search also briefly explain the following local search algorithms:
+- Simple hill climbing
+- Stochastic hill climbing
+- Steepest-ascent hill climbing
+- First-choice hill climbing
+- Random-restart hill climbing
+- Simulated annealing
+
+### 4.19.1. Answer: 
+**What is Local Search?**
+
+Local Search is a search technique that starts from one solution and repeatedly moves to a better neighboring solution until it finds a good or optimal solution.
+
+**Why do we use Local Search?**
+To solve optimization problems.
+It uses less memory than tree search algorithms.
+It is suitable for large search spaces where finding the exact path is not important.
+
+**Local Search Algorithms:**
+
+1. Simple Hill Climbing
+   - Checks neighbors one by one.
+   - Moves to the first better neighbor found.
+   - Stops if no better neighbor exists.
+   - Example: Climbing a hill by taking the first upward step.
+
+2. Stochastic Hill Climbing
+   - Randomly selects one of the better neighboring states.
+   - Helps avoid always following the same path.
+   - Example: Randomly choosing one of several uphill paths.
+
+3. Steepest-Ascent Hill Climbing
+   - Examines all neighboring states.
+   - Chooses the neighbor with the greatest improvement.
+   - Example: Choosing the steepest path to climb a hill.
+
+4. First-Choice Hill Climbing
+   - Randomly checks neighbors.
+   - Moves to the first better neighbor found without checking all neighbors.
+   - Faster when there are many neighbors.
+   - Example: Taking the first uphill path you find.
+
+5. Random-Restart Hill Climbing
+   - Runs hill climbing multiple times from different random starting points.
+   - Increases the chance of finding the global optimum.
+   - Example: Starting to climb a mountain from different locations.
+
+6. Simulated Annealing
+   - Usually moves to a better neighbor.
+   - Sometimes accepts a worse neighbor to escape local optima.
+   - The chance of accepting worse moves decreases over time.
+   - Example: A person may take a small downhill step to reach a higher mountain later.
+
+## 4.20. Question 20: 
+![alt text](./assets/images/home-work-1/question-20.png)
+
+### 4.20.1. Answer:
+In Simulated Annealing, the probability of accepting a worse (bad) state depends on the temperature (T).
+
+Given the probability function: 
+![alt text](./assets/images/home-work-1/probability-function.png)
+
+![alt text](./assets/images/home-work-1/ans-to-the-question-20.png)
 
 # 5. CT1 SET A:
 ![alt text](./assets/images/class-test/ct1-set-a.png)
